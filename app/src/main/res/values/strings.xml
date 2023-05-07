@@ -14,6 +14,11 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="desc">Desc.:</string>
+    <string name="my_order">My orders</string>
+    <string name="order">Order</string>
+    <string name="description">Description</string>
+    <string name="nameOrder">Name</string>
+    <string name="price">Price</string>
 
 
 </resources>

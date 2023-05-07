@@ -1,22 +1,24 @@
 package com.example.textil_shop;
 
 public class Item {
-    private String name;
-    private String desc;
-    private int price;
+    private String Name;
+    private String Desc;
+    private int Price;
 
-    public Item(String name, String info, int price) {
-        this.name = name;
-        this.desc = info;
-        this.price = price;
+    public Item(String name, String desc, int price) {
+        this.Name = name;
+        this.Desc = desc;
+        this.Price = price;
     }
 
+    public Item() {
+    }
 
-    public String getName() {return name;}
-    public String getInfo() {return desc;}
-    public int getPrice() {return price;}
+    public String getName() {return Name;}
+    public String getDesc() {return Desc;}
+    public int getPrice() {return Price;}
 
-    public void setName(String name) {this.name= name;}
-    public void setDesc(String desc) {this.desc = desc;}
-    public void setPrice(int price) {this.price = price;}
+    public void setName(String name) {this.Name = name;}
+    public void setDesc(String desc) {this.Desc = desc;}
+    public void setPrice(int price) {this.Price = price;}
 }

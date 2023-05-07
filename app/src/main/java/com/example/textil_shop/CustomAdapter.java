@@ -72,7 +72,7 @@ public class CustomAdapter extends ArrayAdapter<Item> implements View.OnClickLis
             viewHolder.txtName.setText(item.getName());
             String p = "$"+ item.getPrice() + "/yard";
             viewHolder.txtPrice.setText(p);
-            viewHolder.txtDesc.setText(item.getInfo());
+            viewHolder.txtDesc.setText(item.getDesc());
 
             return convertView;
         }
