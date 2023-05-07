@@ -49,8 +49,13 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Log.d(LOG_TAG, "Login done!");
-                    startBrowsing();
+                    try {
+                        Log.d(LOG_TAG, "Login done!");
+                        startBrowsing();
+                    }catch (Exception e){
+                        Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+
                 } else {
                     Toast.makeText(LoginActivity.this, "Invalid email or password!", Toast.LENGTH_LONG).show();
                 }
@@ -59,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void startBrowsing() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, BrowsingActivity.class);
         intent.putExtra("SECRET_KEY", SECRET_KEY);
         startActivity(intent);
     }
