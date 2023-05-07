@@ -9,24 +9,20 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
-import com.google.android.material.snackbar.Snackbar;
-
 import java.util.ArrayList;
 
-public class CustomAdapter extends ArrayAdapter<DataModel> implements View.OnClickListener{
+public class CustomAdapter extends ArrayAdapter<Item> implements View.OnClickListener{
 
-        private ArrayList<DataModel> dataSet;
+        private ArrayList<Item> dataSet;
         Context mContext;
 
-        // View lookup cache
         private static class ViewHolder {
             TextView txtName;
-            TextView txtType;
-            TextView txtVersion;
+            TextView txtPrice;
+            TextView txtDesc;
         }
 
-        public CustomAdapter(ArrayList<DataModel> data, Context context) {
+        public CustomAdapter(ArrayList<Item> data, Context context) {
             super(context, R.layout.row_item, data);
             this.dataSet = data;
             this.mContext=context;
@@ -35,11 +31,9 @@ public class CustomAdapter extends ArrayAdapter<DataModel> implements View.OnCli
 
         @Override
         public void onClick(View v) {
-
             int position=(Integer) v.getTag();
             Object object= getItem(position);
-            DataModel dataModel=(DataModel)object;
-
+            Item ItemModel=(Item)object;
 
         }
 
@@ -48,7 +42,7 @@ public class CustomAdapter extends ArrayAdapter<DataModel> implements View.OnCli
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 
-            DataModel dataModel = getItem(position);
+            Item item = getItem(position);
 
             ViewHolder viewHolder;
 
@@ -60,8 +54,8 @@ public class CustomAdapter extends ArrayAdapter<DataModel> implements View.OnCli
                 LayoutInflater inflater = LayoutInflater.from(getContext());
                 convertView = inflater.inflate(R.layout.row_item, parent, false);
                 viewHolder.txtName = (TextView) convertView.findViewById(R.id.name);
-                viewHolder.txtType = (TextView) convertView.findViewById(R.id.type);
-                viewHolder.txtVersion = (TextView) convertView.findViewById(R.id.version_number);
+                viewHolder.txtPrice = (TextView) convertView.findViewById(R.id.price);
+                viewHolder.txtDesc = (TextView) convertView.findViewById(R.id.textil_desc);
 
                 result=convertView;
 
@@ -75,9 +69,10 @@ public class CustomAdapter extends ArrayAdapter<DataModel> implements View.OnCli
             result.startAnimation(animation);
             lastPosition = position;
 
-            viewHolder.txtName.setText(dataModel.getName());
-            viewHolder.txtType.setText(dataModel.getType());
-            viewHolder.txtVersion.setText(dataModel.getVersion_number());
+            viewHolder.txtName.setText(item.getName());
+            String p = "$"+ item.getPrice() + "/yard";
+            viewHolder.txtPrice.setText(p);
+            viewHolder.txtDesc.setText(item.getInfo());
 
             return convertView;
         }
