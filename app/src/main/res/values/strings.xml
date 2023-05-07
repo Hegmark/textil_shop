@@ -19,6 +19,9 @@
     <string name="description">Description</string>
     <string name="nameOrder">Name</string>
     <string name="price">Price</string>
+    <string name="what">What?</string>
+    <string name="how_many_yards">How many yards?</string>
+    <string name="delete_this_order">Delete this Order</string>
 
 
 </resources>

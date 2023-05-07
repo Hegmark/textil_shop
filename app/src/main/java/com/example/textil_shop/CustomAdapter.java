@@ -34,7 +34,6 @@ public class CustomAdapter extends ArrayAdapter<Item> implements View.OnClickLis
             int position=(Integer) v.getTag();
             Object object= getItem(position);
             Item ItemModel=(Item)object;
-
         }
 
         private int lastPosition = -1;

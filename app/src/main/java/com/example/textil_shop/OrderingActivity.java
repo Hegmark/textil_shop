@@ -1,7 +1,12 @@
 package com.example.textil_shop;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class OrderingActivity extends AppCompatActivity {
 
     private FirebaseUser user;
+    private NotificationManager mManager;
     private Item item;
     TextView desc;
     TextView name;
@@ -59,6 +65,15 @@ public class OrderingActivity extends AppCompatActivity {
             Float yard = Float.parseFloat(number.getText().toString());
             Order order = new Order(user.getUid(),item.getName(),yard);
             mOrders.add(order);
+
+            mManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                NotificationChannel channel = new NotificationChannel("Textil_shop", "Shop Notification", NotificationManager.IMPORTANCE_HIGH);
+                channel.setDescription("Textil Shop");
+                mManager.createNotificationChannel(channel);
+            }
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "Textil_shop").setContentTitle("Textil Shop").setContentText("Your Order Is Ready!").setSmallIcon(R.drawable.bell);
+            mManager.notify(0, builder.build());
 
             Intent intent = new Intent(this, BrowsingActivity.class);
             startActivity(intent);
